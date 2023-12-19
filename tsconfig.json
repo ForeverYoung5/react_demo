@@ -16,6 +16,6 @@
     "jsx": "react-jsx",
     "declaration": true
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.json"],
+  "include": ["./typings/**/*","src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.json"],
   "exclude": ["node_modules"]
 }

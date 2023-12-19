@@ -1,15 +1,12 @@
 import SideBar from "../SideBar";
+import styles from './style.module.scss';
 
 interface IProps {
   mainComponent: any;
 };
 
-const layoutContainer = {
-  display: 'flex'
-}
-
 const Layout: React.FC<IProps> = ({ mainComponent }) => {
-  return <div style={layoutContainer}>
+  return <div className={styles.layoutContainer}>
     <SideBar />
     <div>
       {mainComponent()}
