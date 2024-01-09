@@ -1,0 +1,25 @@
+//生成随机背景色
+@function random-color() {
+  $red: random(255);
+  $green: random(255);
+  $blue: random(255);
+  @return rgb($red, $green, $blue);
+};
+
+// 针对一百个元素生成背景色
+@for $i from 0 through 99 {
+  .mockElementBg#{$i} {
+    background-color: random-color();
+  }
+};
+
+
+.mockElement {
+  width: 200px;
+  height: 200px;
+}
+
+.mockElementContainer {
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -8,7 +8,7 @@ interface IProps {
 const Layout: React.FC<IProps> = ({ mainComponent }) => {
   return <div className={styles.layoutContainer}>
     <SideBar />
-    <div>
+    <div className={styles.main}>
       {mainComponent()}
     </div>
   </div>
