@@ -23,3 +23,15 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.minLineLastElement{
+  visibility: hidden;
+  position: relative;
+}
+
+.expandButton{
+  visibility: visible;// 具有继承性，子元素通过visible展示
+  position: absolute;
+  bottom:50%;
+  transform: translateY(50%);
+}
