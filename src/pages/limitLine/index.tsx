@@ -16,17 +16,15 @@ for (let i = 0; i < 100; i++) {
   mockElements.push(`第${i + 1}个元素`)
 };
 
+const elementMap:Map<number, { element: any, index: number }> = new Map()
+
 const LimitLine = () => {
   const elementContainerRef: any = useRef(null);
   const [elementContainerHeight, setElementContainerHeight] = useState<number | 'initial'>('initial');
   const [minLineLastElementIndex, setMinLineLastElementIndex] = useState<null | number>(null);
   const [maxLineLastElementIndex, setMaxLineLastElementIndex] = useState<null | number>(null);
   const minLine = 2, maxLine = 4;
-  // const [minLine,setMinLine] = useState(2);
-  // const [maxLine,setMaxLine] = useState(4);
-  const [elementMap, setElementMap] = useState<Map<number, { element: any, index: number }>>(new Map())
-  // const elementMap: Map<number, { element: any, index: number }> = new Map();
-
+  // const [elementMap, setElementMap] = useState<Map<number, { element: any, index: number }>>(new Map())
 
   /**
    * @description: 隐藏minLine行或者maxLine行之外的元素
