@@ -2,24 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import routes from './routes';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
-import Layout from './components/Layout';
+import Authorization from './components/Authorization';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as Element | DocumentFragment);
 root.render(
   <React.StrictMode>
-    <Router>
-      <Routes>
-        {routes.map((item) => {
-          return <Route
-            path={item.path}
-            key={item.path}
-            element={<Layout mainComponent={item.element} />}
-          />
-        })}
-      </Routes>
-    </Router>
+    <Authorization/>
   </React.StrictMode>
 );
 
