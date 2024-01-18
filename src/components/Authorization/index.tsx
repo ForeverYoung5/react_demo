@@ -20,12 +20,14 @@ const Authorization: React.FC = function () {
     const resp: ApiResponse = await axios.get('http://localhost:5000/users/authorization');
     const { data } = resp;
     let res = routes.filter(e => data.includes(e.path));
-    // res.push({
-    //   path: '*', element: () => {
-    //     console.log(window.location);
-    //     return <h1>请检查是否有权限</h1>
-    //   }
-    // });
+    res.push({
+      name:"",
+      hidden:true,
+      path: '*', element: () => {
+        console.log(window.location);
+        return <h1>请检查是否有权限</h1>
+      }
+    });
     setAuth(res);
   };
 
