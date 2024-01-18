@@ -9,7 +9,6 @@ function fetchDataFromServer() {
 };
 const LazyComp = () => {
   const [data, setData] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,13 +18,11 @@ const LazyComp = () => {
         setData(result);
       } catch (error) {
         console.error('Error fetching data:', error);
-      } finally {
-        setLoading(false);
       }
     };
 
     fetchData();
-  }, []); // 空依赖数组表示只在组件挂载时执行一次
+  }, []); 
 
   return (
     <div>
