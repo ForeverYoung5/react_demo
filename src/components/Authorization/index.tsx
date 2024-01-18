@@ -1,8 +1,7 @@
 import axios from '../../axios';
 import routes from '../../routes';
-import Layout from '../Layout';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { TRouteItem } from '../../routes/index';
 
 const Authorization: React.FC = function () {
@@ -10,23 +9,23 @@ const Authorization: React.FC = function () {
 
   useEffect(() => {
     getAuth();
-  },[]);
+  }, []);
 
   // 定义 API 响应数据的接口
   interface ApiResponse {
-    data: string[]; 
+    data: string[];
   };
 
   const getAuth = async () => {
     const resp: ApiResponse = await axios.get('http://localhost:5000/users/authorization');
     const { data } = resp;
     let res = routes.filter(e => data.includes(e.path));
-    res.push({
-      path: '*', element: () => {
-        console.log(window.location);
-        return <h1>请检查是否有权限</h1>
-      }
-    });
+    // res.push({
+    //   path: '*', element: () => {
+    //     console.log(window.location);
+    //     return <h1>请检查是否有权限</h1>
+    //   }
+    // });
     setAuth(res);
   };
 
@@ -37,7 +36,7 @@ const Authorization: React.FC = function () {
           return <Route
             path={item.path}
             key={item.path}
-            element={<Layout mainComponent={item.element} />}
+            element={<item.element />}
           />
         })}
       </Routes>

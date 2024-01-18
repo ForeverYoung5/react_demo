@@ -2,13 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Authorization from './components/Authorization';
-
+import Layout from './components/Layout';
 const root = ReactDOM.createRoot(document.getElementById('root') as Element | DocumentFragment);
 root.render(
-  <React.StrictMode>
-    <Authorization/>
-  </React.StrictMode>
+  // <React.StrictMode>
+    <Layout />
+  // </React.StrictMode>
 );
 
 // 是一个用于监控 Web 应用性能的函数，

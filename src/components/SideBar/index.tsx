@@ -1,8 +1,7 @@
 import React from 'react';
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import routes from '../../routes';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -22,31 +21,14 @@ function getItem(
     path: key
   } as MenuItem;
 }
-
-const items: MenuProps['items'] = [
-  getItem('场景题', '/', <MailOutlined />, [
-    getItem('行数限制', '/limitLine', null),
-  ]),
-
-  getItem('Suspense组件使用', '/suspenseComp', <AppstoreOutlined />),
-
-  { type: 'divider' },
-
-  getItem('Navigation Three', 'sub4', <SettingOutlined />, [
-    getItem('Option 9', '9'),
-    getItem('Option 10', '10'),
-    getItem('Option 11', '11'),
-    getItem('Option 12', '12'),
-  ]),
-
-  getItem('Group', 'grp', null, [getItem('Option 13', '13'), getItem('Option 14', '14')], 'group'),
-];
+const items = routes.filter(e=>!e.hidden).map((route)=>{
+  return getItem(route.name,route.path,null);
+})
 
 const SideBar: React.FC = () => {
-  const navigate = useNavigate();
 
   const goPage: MenuProps['onClick'] = (e) => {
-    navigate(e.key);
+    window.location.hash = e.key
   };
 
   return (
