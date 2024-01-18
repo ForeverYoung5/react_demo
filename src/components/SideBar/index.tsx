@@ -28,11 +28,7 @@ const items: MenuProps['items'] = [
     getItem('行数限制', '/limitLine', null),
   ]),
 
-  getItem('Navigation Two', 'sub2', <AppstoreOutlined />, [
-    getItem('Option 5', '5'),
-    getItem('Option 6', '6'),
-    getItem('Submenu', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
-  ]),
+  getItem('Suspense组件使用', '/suspenseComp', <AppstoreOutlined />),
 
   { type: 'divider' },
 

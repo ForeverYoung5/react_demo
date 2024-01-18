@@ -9,8 +9,8 @@ const Authorization: React.FC = function () {
   const [auth, setAuth] = useState<TRouteItem[]>();
 
   useEffect(() => {
-    getAuth()
-  }, [])
+    getAuth();
+  },[]);
 
   // 定义 API 响应数据的接口
   interface ApiResponse {
