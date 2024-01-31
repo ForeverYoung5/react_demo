@@ -1,7 +1,8 @@
 import React from 'react';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
-import routes from '../../routes';
+import type { TRouteItem } from '../../routes/index';
+import { useNavigate } from 'react-router-dom';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -21,15 +22,23 @@ function getItem(
     path: key
   } as MenuItem;
 }
-const items = routes.filter(e=>!e.hidden).map((route)=>{
-  return getItem(route.name,route.path,null);
-})
 
-const SideBar: React.FC = () => {
+
+interface IProps {
+  auth: TRouteItem[] | undefined
+}
+
+const SideBar: React.FC<IProps> = (props: IProps) => {
+  const navigate = useNavigate();
 
   const goPage: MenuProps['onClick'] = (e) => {
-    window.location.hash = e.key
+    // window.location.hash = e.key
+    navigate(e.key)
   };
+
+  const items = props.auth?.filter(e => !e.hidden).map((route) => {
+    return getItem(route.name, route.path, null);
+  });
 
   return (
     <Menu
