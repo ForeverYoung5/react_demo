@@ -5,9 +5,9 @@ import reportWebVitals from './reportWebVitals';
 import Layout from './components/Layout';
 const root = ReactDOM.createRoot(document.getElementById('root') as Element | DocumentFragment);
 root.render(
-  // <React.StrictMode>
+  <React.Suspense>
     <Layout />
-  // </React.StrictMode>
+  </React.Suspense>
 );
 
 // 是一个用于监控 Web 应用性能的函数，
