@@ -1,7 +1,7 @@
 import SideBar from "../SideBar";
 import styles from './style.module.scss';
 import React, { useEffect, useState } from 'react';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import type { TRouteItem } from '../../routes/index';
 import axios from '../../axios';
 import routes from '../../routes';
@@ -10,9 +10,10 @@ const Layout: React.FC = () => {
   const [auth, setAuth] = useState<TRouteItem[]>();
 
   const getAuth = async () => {
-    const resp: TApiResponse = await axios.get('http://localhost:5000/users/authorization');
-    const { data } = resp;
-    let res = routes.filter(e => data.includes(e.path));//过滤出来有权限的路由
+    // const resp: TApiResponse = await axios.get('http://localhost:5000/users/authorization');
+    // const { data } = resp;
+    // let res = routes.filter(e => data.includes(e.path));//过滤出来有权限的路由
+    let res = routes;//过滤出来有权限的路由
     res.push({
       name: "",
       hidden: true,
@@ -33,8 +34,10 @@ const Layout: React.FC = () => {
     data: string[];
   };
 
+  console.log('baseName---------!!!-----', window.__POWERED_BY_QIANKUN__);
+
   return <div className={styles.layoutContainer}>
-    <Router>
+    <BrowserRouter basename={window.__POWERED_BY_QIANKUN__ ? '/microReact/' : '/'}>
       <SideBar auth={auth} />
       <div className={styles.main}>
         <Routes>
@@ -47,9 +50,7 @@ const Layout: React.FC = () => {
           })}
         </Routes>
       </div>
-
-    </Router>
-
+    </BrowserRouter>
   </div>
 };
 
