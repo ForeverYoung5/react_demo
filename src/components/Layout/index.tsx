@@ -1,7 +1,7 @@
 import SideBar from "../SideBar";
 import styles from './style.module.scss';
 import React, { useEffect, useState } from 'react';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import type { TRouteItem } from '../../routes/index';
 import axios from '../../axios';
 import routes from '../../routes';
@@ -12,7 +12,8 @@ const Layout: React.FC = () => {
   const getAuth = async () => {
     const resp: TApiResponse = await axios.get('http://localhost:5000/users/authorization');
     const { data } = resp;
-    let res = routes.filter(e => data.includes(e.path));//过滤出来有权限的路由
+    // let res = routes.filter(e => data.includes(e.path));//过滤出来有权限的路由
+    let res = routes;//暂时使用全部路由
     res.push({
       name: "",
       hidden: true,
