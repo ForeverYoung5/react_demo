@@ -3,6 +3,7 @@ import Login from '../pages/Login';
 import SuspenseComp from "../pages/suspenseComp";
 import React from "react";
 import SendParams from "../pages/sendParams";
+import ReduxTest from "../pages/reduxTest";
 import {ParamsReceive,SearchReceive,StateReceive} from "../pages/receiveParams/index";
 const LifeCycleCom = React.lazy(()=>import('../pages/lifeCycle'));
 
@@ -17,6 +18,7 @@ const routes: TRouteItem[] = [
   { path: '/routeParamsReceive/:id', element: ParamsReceive,name:"路由接收params参数",hidden:true },
   { path: '/routeSearchReceive', element: SearchReceive,name:"路由接收search参数",hidden:true },
   { path: '/routeStateReceive', element: StateReceive,name:"路由接收state参数",hidden:true },
+  {path:'/reduxTest',element:ReduxTest,name:"redux使用"}
 ]
 
 export default routes;

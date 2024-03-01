@@ -3,10 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Layout from './components/Layout';
+import { Provider } from 'react-redux';
+import store from './store';
+
 const root = ReactDOM.createRoot(document.getElementById('root') as Element | DocumentFragment);
 root.render(
   <React.Suspense>
-    <Layout />
+    <Provider store={store}>
+      <Layout />
+    </Provider>
   </React.Suspense>
 );
 
